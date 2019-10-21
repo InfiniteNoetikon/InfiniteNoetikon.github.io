@@ -1,0 +1,35 @@
+<html>
+ <head>
+  <title>Test Client</title>
+  <script>
+function mysend()
+{
+obj = { "company":"ghi", "job_type":4 };
+dbParam = JSON.stringify(obj);
+xmlhttp = new XMLHttpRequest();
+xmlhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+alert("xxYes a 200....");
+alert("rsp=" + this.responseText);
+alert("hello...hi");
+alert("myObj = " + myObj);
+        for (x in myObj) {
+						alert("x = " + x + ", myObj[...] = " + myObj[x]);
+            txt += "<strong>" + myObj[x].rv + "</strong>";
+        }
+        document.getElementById("results").innerHTML = txt;
+    }
+};
+
+xmlhttp.open("POST", "record_visit.php", true);
+xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+xmlhttp.send("x=" + dbParam);
+}
+  </script>
+ </head>
+ <body>
+  <h1>This is my test client</h1>
+  <input type="button" name="foo" value="Send" onclick="mysend()">
+  <p>Results: <span id="results">This is the result</span></p>
+ </body>
+</html>
